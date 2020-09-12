@@ -1,0 +1,11 @@
+<launch>
+
+	<arg name="config" default="$(find home_task_1)/rviz/urdf.rviz" />
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find home_task_1)/urdf/robot.xacro" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg config)" required="true"/>
+	
+    <!--<node name="controller_node" pkg="home_task_1" type="controller_node"/>-->
+
+</launch>

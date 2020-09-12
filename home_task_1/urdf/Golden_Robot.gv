@@ -1,0 +1,20 @@
+digraph G {
+node [shape=box];
+"link 0" [label="link 0"];
+"link 1" [label="link 1"];
+"link 2" [label="link 2"];
+"link 3" [label="link 3"];
+"link 4" [label="link 4"];
+"link 5" [label="link 5"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"link 0" -> "links-0-1" [label="xyz: 0 0 0.125 \nrpy: 0 -0 0"]
+"links-0-1" -> "link 1"
+"link 1" -> "links-1-2" [label="xyz: 0 0 0.5 \nrpy: 0 -0 0"]
+"links-1-2" -> "link 2"
+"link 2" -> "links-2-3" [label="xyz: -0.55 0 3.4 \nrpy: 0 -0 0"]
+"links-2-3" -> "link 3"
+"link 3" -> "links-3-4" [label="xyz: -1.8 0 0 \nrpy: 0 -0 0"]
+"links-3-4" -> "link 4"
+"link 4" -> "links-4-5" [label="xyz: -1.4 0 0 \nrpy: 0 -0 0"]
+"links-4-5" -> "link 5"
+}

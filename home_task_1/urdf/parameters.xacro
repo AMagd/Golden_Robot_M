@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot name="Golden_Robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:property name="pi" value="3.14159265359"/>
+
+<!-- LINK 0 -->
+<xacro:property name="l0" value="0.25"/>
+<xacro:property name="r0" value="1.5"/>
+
+<!-- LINK 1 -->
+<xacro:property name="l1" value="0.5"/>
+<xacro:property name="r1" value="1"/>
+
+<!-- LINK 2 -->
+<xacro:property name="l2" value="3.5"/>
+<xacro:property name="r2" value="0.25"/>
+<xacro:property name="hl" value="0.75"/>
+
+
+<!-- LINK 3 -->
+<xacro:property name="x3" value="2"/>
+<xacro:property name="y3" value="0.2"/>
+<xacro:property name="z3" value="0.2"/>
+
+<!-- LINK 4 -->
+<xacro:property name="x4" value="1.5"/>
+<xacro:property name="y4" value="0.05"/>
+<xacro:property name="z4" value="0.2"/>
+
+<!-- LINK 5 -->
+<xacro:property name="x5" value="0.75"/>
+<xacro:property name="y5" value="0.2"/>
+<xacro:property name="z5" value="0.2"/>
+
+</robot>

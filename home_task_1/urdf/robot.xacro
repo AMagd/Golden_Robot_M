@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot name="Golden_Robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ XACROS BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <xacro:include filename="$(find home_task_1)/urdf/macros.xacro"/>
+  <xacro:include filename="$(find home_task_1)/urdf/parameters.xacro"/>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ XACROS END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+
+  <material name="gold">
+    <color rgba="0.992 0.788 0.04 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LINKS BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <xacro:full_cylinder name="link 0" length="${l0}" radius="${r0}" rpy="0 0 0" xyz="0 0 0" color="gold" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+
+  <xacro:full_cylinder name="link 1" length="${l1}" radius="${r1}" rpy="0 0 0" xyz="0 0 ${l1 / 2}" color="black" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+
+  <xacro:cylinder_holder name="link 2" length="${l2}" radius="${r2}" rpy="0 0 0" xyz="0 0 ${l2 / 2}" color="gold" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" attached_link_width="${y3}" attached_link_height="${z3}" holder_length="${hl}"/>
+
+  <xacro:full_box name="link 3" size="${x3} ${y3} ${z3}" rpy="0 0 0" xyz="${-x3/2} 0 0" color="black" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+
+  <xacro:full_double_box name="link 4" size="${x4} ${y4} ${z4}" rpy="0 0 0" xyz1="${-x4/2} ${(y3/2)+(y4/2)} 0" xyz2="${-x4/2} -${(y3/2)+(y4/2)} 0" color="gold" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+
+   <xacro:full_box name="link 5" size="${x5} ${y5} ${z5}" rpy="0 0 0" xyz="${-x5/2} 0 0" color="black" mass="1" ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+
+  <!-- LINKS END -->
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ JOINTS BEGIN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <xacro:continuous_joint name="links-0-1" parent="link 0" child="link 1" origin="0 0 ${l0 / 2}" axis="0 0 1"/>
+
+  <xacro:fixed_joint name="links-1-2" parent="link 1" child="link 2" origin="0 0 ${l1}"/>
+
+  <xacro:revolute_joint name="links-2-3" parent="link 2" child="link 3" origin="-${hl-0.2} 0 ${l2 - (z3/2)}" axis="0 1 0" lower="-${pi/2}" upper="${pi/2}" effort="10" velocity="3"/>
+
+  <xacro:continuous_joint name="links-3-4" parent="link 3" child="link 4" origin="${-x3+0.2} 0 0" axis="0 1 0"/>
+
+  <xacro:continuous_joint name="links-4-5" parent="link 4" child="link 5" origin="${-x4+0.1} 0 0" axis="0 1 0"/>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ JOINTS END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+ </robot>
